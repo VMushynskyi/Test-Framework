@@ -1,9 +1,11 @@
 package framework.ui.business.steps;
 
-import framework.ui.core.logging.Log;
 import framework.ui.core.pages.MainPage;
+import framework.ui.core.utilits.logging.Log;
 import io.qameta.allure.Step;
+import org.testng.annotations.Listeners;
 
+@Listeners({framework.ui.core.utilits.listeners.TestListener.class})
 public class MainPageSteps {
 
     private static MainPage mainPage;

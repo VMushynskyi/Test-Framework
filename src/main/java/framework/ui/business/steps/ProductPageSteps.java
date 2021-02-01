@@ -2,7 +2,9 @@ package framework.ui.business.steps;
 
 import framework.ui.core.pages.ProductPage;
 import io.qameta.allure.Step;
+import org.testng.annotations.Listeners;
 
+@Listeners({framework.ui.core.utilits.listeners.TestListener.class})
 public class ProductPageSteps {
 
     private static ProductPage productPage;

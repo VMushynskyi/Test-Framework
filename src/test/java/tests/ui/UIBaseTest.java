@@ -1,9 +1,9 @@
 package tests.ui;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -17,13 +17,14 @@ public class UIBaseTest {
         Configuration.pollingInterval = 200;
     }
 
-    @BeforeMethod
+    @BeforeTest
     public void doBeforeMethod(){
         open("/");
     }
 
-    @AfterMethod
+    @AfterTest
     public void doAfterMethod(){
-        WebDriverRunner.getWebDriver().close();
+        Selenide.closeWindow();
+        Selenide.closeWebDriver();
     }
 }

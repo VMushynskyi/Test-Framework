@@ -1,4 +1,4 @@
-package framework.ui.core.logging;
+package framework.ui.core.utilits.logging;
 
 import io.qameta.allure.Step;
 import org.slf4j.Logger;

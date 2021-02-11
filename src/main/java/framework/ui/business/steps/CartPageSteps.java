@@ -2,12 +2,10 @@ package framework.ui.business.steps;
 
 import framework.ui.core.pages.CartPage;
 import io.qameta.allure.Step;
-import org.testng.annotations.Listeners;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.containsString;
 
-@Listeners({framework.ui.core.utilits.listeners.TestListener.class})
 public class CartPageSteps {
 
     private static CartPage cartPage;

@@ -3,9 +3,11 @@ package tests.ui;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import org.testng.annotations.*;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 public class UIBaseTest {
 
@@ -17,12 +19,16 @@ public class UIBaseTest {
         Configuration.pollingInterval = 200;
     }
 
-    @BeforeTest
+    public WebDriver getDriver(){
+        return WebDriverRunner.getWebDriver();
+    }
+
+    @BeforeClass
     public void doBeforeMethod(){
         open("/");
     }
 
-    @AfterTest
+    @AfterClass
     public void doAfterMethod(){
         Selenide.closeWindow();
         Selenide.closeWebDriver();

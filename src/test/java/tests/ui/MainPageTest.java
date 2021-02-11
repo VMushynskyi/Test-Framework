@@ -1,12 +1,15 @@
 package tests.ui;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import tests.listeners.TestListener;
 
 import static framework.ui.business.steps.CartPageSteps.initCartPage;
 import static framework.ui.business.steps.MainPageSteps.initMainPage;
 import static framework.ui.business.steps.ProductPageSteps.initProductPage;
 import static framework.ui.core.pages.BasePage.openCartLink;
 
+@Listeners({TestListener.class})
 public class MainPageTest extends UIBaseTest {
 
     @Test

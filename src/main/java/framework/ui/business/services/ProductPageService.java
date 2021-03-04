@@ -1,18 +1,15 @@
-package framework.ui.business.steps;
+package framework.ui.business.services;
 
 import framework.ui.core.pages.ProductPage;
 import io.qameta.allure.Step;
 
-public class ProductPageSteps {
+public class ProductPageService {
 
     private static ProductPage productPage;
 
-    private ProductPageSteps() {
-    }
-
-    public static ProductPageSteps initProductPage() {
+    public static ProductPageService initProductPage() {
         productPage = new ProductPage();
-        return new ProductPageSteps();
+        return new ProductPageService();
     }
 
     @Step("Add product with {0} id to the Cart")

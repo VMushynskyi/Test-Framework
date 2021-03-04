@@ -6,9 +6,9 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class CartPage {
 
-    private static final String PRODUCT_NAME_PATH =  "//tr[@data-id='%d']//td[3]//a";
+    private static final String PRODUCT_NAME_PATH = "//tr[@data-id='%d']//td[3]//a";
 
     public String getProductNameById(int productId) {
-        return $(By.xpath(String.format(PRODUCT_NAME_PATH,productId))).getText();
+        return $(By.xpath(String.format(PRODUCT_NAME_PATH, productId))).getText();
     }
 }

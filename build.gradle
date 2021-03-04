@@ -31,4 +31,8 @@ dependencies {
     compile group: 'io.qameta.allure', name: 'allure-selenide', version: '2.0-BETA22'
     compile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.0'
     compile group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    testCompileOnly 'org.projectlombok:lombok:1.18.16'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
 }

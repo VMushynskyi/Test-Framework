@@ -1,4 +1,4 @@
-package tests.pool;
+package tests.api.pool;
 
 import tests.api.ApiTest;
 
@@ -7,7 +7,6 @@ public class ExportingProcess {
     private ApiTest apiTest;
 
     public ExportingProcess() {
-
         this.apiTest = new ApiTest();
     }
 

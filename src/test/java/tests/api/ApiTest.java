@@ -1,48 +1,53 @@
 package tests.api;
 
 import framework.api.models.Book;
-import framework.api.steps.BookSteps;
+import framework.api.service.BookServices;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import tests.BaseApi;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class ApiTest extends BaseApi {
 
+    private BookServices bookServices;
+
+    @AfterTest
+    public void initBookServices() {
+        bookServices = new BookServices();
+    }
+
     @Test
-    public void testGetBookTitle() {
-        BookSteps bookSteps = new BookSteps();
-        System.out.println(bookSteps.getBookTile(1, getRequestSpecification()));
-        assertThat(bookSteps.getBookTile(1, getRequestSpecification())).isEqualTo("sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+    @Parameters("title")
+    public void testGetBookTitle(String title) {
+        System.out.println(bookServices.getBookTile("1"));
+        assertThat(bookServices.getBookTile("1")).isEqualTo(title);
     }
 
     @Test
     public void testGetAllBook() {
-        BookSteps bookSteps = new BookSteps();
-        System.out.println(bookSteps.getAllBooks(getRequestSpecification()).size());
-        assertThat(bookSteps.getAllBooks(getRequestSpecification()).size()).isEqualTo(100);
+        System.out.println(bookServices.getAllBooks().size());
+        assertThat(bookServices.getAllBooks().size()).isEqualTo(100);
     }
 
     @Test
     public void testPostBook() {
-        BookSteps bookSteps = new BookSteps();
-        bookSteps.createBook(new Book(101, "Heroes", "hello test", 1), getRequestSpecification());
+        bookServices.createBook(new Book(101, "Heroes", "hello test", 1));
     }
 
     @Test
     public void testGetSpecificBook() {
-        BookSteps bookSteps = new BookSteps();
-        assertThat(bookSteps.getBookTile(101, getRequestSpecification())).isEqualTo("Heroes");
+        assertThat(bookServices.getBookTile("101")).isEqualTo("Heroes");
     }
 
     @Test
     public void testPatchBook() {
-        BookSteps bookSteps = new BookSteps();
-        bookSteps.updateBookTitle(101, getRequestSpecification(), "New Heroes");
+        bookServices.updateBookTitle("101", "New Heroes");
     }
 
     @Test
     public void testDeleteBook() {
-        BookSteps bookSteps = new BookSteps();
-        bookSteps.deleteBook(101, getRequestSpecification());
+        bookServices.deleteBook("101");
     }
 }

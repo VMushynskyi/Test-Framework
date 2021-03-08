@@ -1,5 +1,6 @@
-package tests.listeners;
+package framework.utils.listeners;
 
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -7,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import tests.ui.UIBaseTest;
 
 public class TestListener implements ITestListener {
 
@@ -23,13 +23,11 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        UIBaseTest bt = (UIBaseTest) result.getInstance();
-        WebDriver driver = bt.getDriver();
-        takePhoto(driver);
+        takeScreenShot(WebDriverRunner.getWebDriver());
     }
 
     @Attachment(value = "Failed screenshots are as follows:", type = "image/png")
-    private byte[]  takePhoto(WebDriver driver){
+    private byte[] takeScreenShot(WebDriver driver){
         byte[] screenshotAs = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
         return screenshotAs;
     }

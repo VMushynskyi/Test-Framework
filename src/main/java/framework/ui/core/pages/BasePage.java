@@ -1,16 +1,18 @@
 package framework.ui.core.pages;
 
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
+import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class BasePage {
 
-    private static final By CART_ICON_LINK = By.xpath("//a[@space='layout/header/cart' and @href='/cart/']");
+    private static final SelenideElement CART_ICON_LINK = $x("//a[@space='layout/header/cart' and @href='/cart/']");
 
-    public static void openCartLink(){
+    @Step("Open cart link")
+    public static void openCartLink() {
         Selenide.refresh();
-        $(CART_ICON_LINK).click();
+        CART_ICON_LINK.click();
     }
 }

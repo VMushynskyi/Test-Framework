@@ -1,41 +1,42 @@
 package tests.ui;
 
+import framework.utils.listeners.TestListener;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import tests.listeners.TestListener;
 
-import static framework.ui.business.steps.CartPageSteps.initCartPage;
-import static framework.ui.business.steps.MainPageSteps.initMainPage;
-import static framework.ui.business.steps.ProductPageSteps.initProductPage;
+import static framework.ui.business.services.CartPageService.initCartPage;
+import static framework.ui.business.services.MainPageService.initMainPage;
+import static framework.ui.business.services.ProductPageService.initProductPage;
 import static framework.ui.core.pages.BasePage.openCartLink;
 
 @Listeners({TestListener.class})
 public class MainPageTest extends UIBaseTest {
 
     @Test
-    public void test01(){
+    public void verifyProductInTheCart() {
         initMainPage()
                 .chooseProductFromBestsellerHeaderTab("Medusa Pro II UFS BGA-153 Socket");
         initProductPage()
-                .addToCart(884487);
+                .addToCart();
         openCartLink();
         initCartPage()
-                .verifyThatProductExistsInTheCartTable(884487,"Medusa Pro II UFS BGA-153 Socket");
+                .verifyThatProductExistsInTheCartTable(System.getProperty("medusaAdapter"), "Medusa Pro II UFS BGA-153 Socket");
     }
 
     @Test
-    public void test02(){
+    public void addedFirstProductToTheCart() {
         initMainPage()
                 .chooseProductFromBestsellerHeaderTab("Medusa Pro II UFS BGA-153 Socket");
         initProductPage()
-                .addToCart(884487);
+                .addToCart();
     }
 
     @Test
-    public void test03(){
+    public void addedSecondProductToTheCart() {
         initMainPage()
                 .chooseProductFromBestsellerHeaderTab("Medusa Pro II UFS BGA-153 Socket");
         initProductPage()
-                .addToCart(884487);
+                .addToCart();
     }
 }

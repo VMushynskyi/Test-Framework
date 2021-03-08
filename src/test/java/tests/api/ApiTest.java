@@ -2,32 +2,27 @@ package tests.api;
 
 import framework.api.models.Book;
 import framework.api.service.BookServices;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import tests.BaseApi;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class ApiTest extends BaseApi {
+public class ApiTest {
 
     private BookServices bookServices;
 
-    @AfterTest
+    @BeforeTest
     public void initBookServices() {
         bookServices = new BookServices();
     }
 
     @Test
-    @Parameters("title")
-    public void testGetBookTitle(String title) {
-        System.out.println(bookServices.getBookTile("1"));
-        assertThat(bookServices.getBookTile("1")).isEqualTo(title);
+    public void testGetBookTitle() {
+        assertThat(bookServices.getBookTile("1")).isEqualTo("");
     }
 
     @Test
     public void testGetAllBook() {
-        System.out.println(bookServices.getAllBooks().size());
         assertThat(bookServices.getAllBooks().size()).isEqualTo(100);
     }
 

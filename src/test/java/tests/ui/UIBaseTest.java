@@ -1,22 +1,24 @@
 package tests.ui;
 
-import com.codeborne.selenide.Selenide;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 
+import static com.codeborne.selenide.Selenide.*;
 import static framework.utils.webmanager.WebDriverManager.setWebDriver;
 
 public class UIBaseTest {
 
-    @BeforeClass
-    public void setDriver(){
+    @BeforeMethod
+    public void setDriverBeforeMethod(){
         setWebDriver();
+        open("/");
     }
 
-    @AfterSuite(alwaysRun = true)
-    public void closeDriverAndWindowsAfterClass(){
-        Selenide.closeWindow();
-        Selenide.closeWebDriver();
+    @AfterMethod(alwaysRun = true)
+    public void closeDriver(){
+        WebDriverRunner.getWebDriver().quit();
     }
 }

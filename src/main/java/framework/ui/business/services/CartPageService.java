@@ -16,7 +16,7 @@ public class CartPageService {
     }
 
     @Step("Verify that product name {1} have appropriate {0} id")
-    public void verifyThatProductExistsInTheCartTable(int productId, String productName) {
+    public void verifyThatProductExistsInTheCartTable(String productId, String productName) {
         assertThat(cartPage.getProductNameById(productId),containsString(productName));
     }
 }

@@ -14,7 +14,7 @@ public class PropertiesManager {
                 properties = new Properties();
             }
             try {
-                file = new FileInputStream("src/main/resources/apiapplication.properties");
+                file = new FileInputStream("src/main/resources/aplication.properties");
                 properties.load(file);
             } catch (IOException e) {
                 e.printStackTrace();

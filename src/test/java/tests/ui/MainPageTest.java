@@ -14,32 +14,29 @@ import static framework.ui.core.pages.BasePage.openCartLink;
 public class MainPageTest extends UIBaseTest {
 
     @Test
-    @Parameters({"id", "product"})
-    public void verifyProductInTheCart(Integer id, String title) {
+    public void verifyProductInTheCart() {
         initMainPage()
-                .chooseProductFromBestsellerHeaderTab(title);
+                .chooseProductFromBestsellerHeaderTab("Medusa Pro II UFS BGA-153 Socket");
         initProductPage()
-                .addToCart(id);
+                .addToCart();
         openCartLink();
         initCartPage()
-                .verifyThatProductExistsInTheCartTable(id, title);
+                .verifyThatProductExistsInTheCartTable(System.getProperty("medusaAdapter"), "Medusa Pro II UFS BGA-153 Socket");
     }
 
     @Test
-    @Parameters({"id", "product"})
-    public void addedFirstProductToTheCart(Integer id, String title) {
+    public void addedFirstProductToTheCart() {
         initMainPage()
-                .chooseProductFromBestsellerHeaderTab(title);
+                .chooseProductFromBestsellerHeaderTab("Medusa Pro II UFS BGA-153 Socket");
         initProductPage()
-                .addToCart(id);
+                .addToCart();
     }
 
     @Test
-    @Parameters({"id", "product"})
-    public void addedSecondProductToTheCart(Integer id, String title) {
+    public void addedSecondProductToTheCart() {
         initMainPage()
-                .chooseProductFromBestsellerHeaderTab(title);
+                .chooseProductFromBestsellerHeaderTab("Medusa Pro II UFS BGA-153 Socket");
         initProductPage()
-                .addToCart(id);
+                .addToCart();
     }
 }

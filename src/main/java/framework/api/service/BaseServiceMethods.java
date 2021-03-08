@@ -5,8 +5,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-import static framework.api.constants.Parameters.POSTS;
-import static framework.api.constants.Parameters.TITLE_QUERY;
+import static framework.api.constants.MethodsUrl.POSTS;
+import static framework.api.constants.MethodsUrl.TITLE_QUERY;
 import static framework.utils.properties.PropertiesManager.getBaseApiURI;
 import static io.restassured.RestAssured.given;
 
@@ -14,14 +14,11 @@ public class BaseServiceMethods {
 
     public static RequestSpecification requestSpecification;
 
-    public static void setupRequestSpecification() {
+    private static RequestSpecification getRequestSpecification() {
         requestSpecification = new RequestSpecBuilder()
                 .setBaseUri(getBaseApiURI())
                 .setContentType(ContentType.JSON)
                 .build();
-    }
-
-    private static RequestSpecification getRequestSpecification() {
         return requestSpecification;
     }
 

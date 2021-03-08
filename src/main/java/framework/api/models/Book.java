@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Book {
-    private int id;
+    private Integer id;
     private String title;
     private String body;
     private int userId;

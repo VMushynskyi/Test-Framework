@@ -13,7 +13,7 @@ public class ProductPageService {
     }
 
     @Step("Add product with {0} id to the Cart")
-    public void addToCart(int productId) {
-        productPage.addProductToCartById(productId);
+    public void addToCart() {
+        productPage.addProductToCartById();
     }
 }

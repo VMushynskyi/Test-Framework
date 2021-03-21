@@ -1,18 +1,19 @@
-package tests.api.pool;
+package tests.api.parallel;
+
+import framework.pool.ObjectPool;
+import tests.api.BaseApiTest;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class ParallelRunApi {
-    private ObjectPool<ExportingProcess> pool;
-    private AtomicLong processNo = new AtomicLong(0);
+    private ObjectPool<ExportingTask> pool;
 
     public void setUp() {
-        pool = new ObjectPool<ExportingProcess>(4, 10, 5) {
-            protected ExportingProcess createObject() {
-                return new ExportingProcess();
+        pool = new ObjectPool<ExportingTask>(4, 10, 5) {
+            protected ExportingTask createObject() {
+                return new ExportingTask();
             }
         };
     }
@@ -22,7 +23,7 @@ public class ParallelRunApi {
     }
 
     public void testObjectPool() {
-        ExecutorService executor = Executors.newFixedThreadPool(4);
+        ExecutorService executor = Executors.newFixedThreadPool(3);
 
         executor.execute(new ExportingTask(pool));
         executor.execute(new ExportingTask(pool));

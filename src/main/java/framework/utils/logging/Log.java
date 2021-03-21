@@ -19,9 +19,9 @@ public class Log {
     }
 
     private static Logger getLogger(int stackTraceLength) {
-        for(int i=0 ; i<23; i++) {
-            System.out.println(Thread.currentThread().getStackTrace()[i] + "          -----------------------");
-        }
+//        for(int i=0 ; i<23; i++) {
+//            System.out.println(Thread.currentThread().getStackTrace()[i] + "          -----------------------");
+//        }
         return LoggerFactory.getLogger(Thread.currentThread().getStackTrace()[stackTraceLength].getClassName());
     }
 }

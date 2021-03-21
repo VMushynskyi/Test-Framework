@@ -2,7 +2,6 @@ package tests.ui;
 
 import framework.utils.listeners.TestListener;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static framework.ui.business.services.CartPageService.initCartPage;

@@ -1,9 +1,8 @@
-package tests.api;
+package tests.api.parallel;
 
 import org.testng.annotations.Test;
-import tests.api.pool.ParallelRunApi;
 
-public class ParallelTests{
+public class ParallelTests {
 
     @Test
     public void runParallelTest() {

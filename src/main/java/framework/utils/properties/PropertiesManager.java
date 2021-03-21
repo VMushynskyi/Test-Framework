@@ -14,7 +14,7 @@ public class PropertiesManager {
                 properties = new Properties();
             }
             try {
-                file = new FileInputStream("src/main/resources/aplication.properties");
+                file = new FileInputStream("src/main/resources/application.properties");
                 properties.load(file);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -26,7 +26,11 @@ public class PropertiesManager {
             return getProperties().getProperty("base.api.url");
         }
 
-        public static String getBaseAUiURI() {
+        public static String getBaseUIURI() {
             return getProperties().getProperty("base.ui.url");
+        }
+
+        public static String getPostsEndpoint(){
+            return getProperties().getProperty("api.posts.endpoint");
         }
 }

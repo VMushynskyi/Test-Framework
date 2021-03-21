@@ -1,4 +1,4 @@
-package tests.api.pool;
+package framework.pool;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;

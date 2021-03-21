@@ -1,24 +1,16 @@
 package tests.api;
 
 import framework.api.models.Book;
-import framework.api.service.BookServices;
-import org.testng.annotations.BeforeTest;
+import framework.utils.logging.Log;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class ApiTest {
-
-    private BookServices bookServices;
-
-    @BeforeTest
-    public void initBookServices() {
-        bookServices = new BookServices();
-    }
+public class ApiTest extends BaseApiTest {
 
     @Test
     public void testGetBookTitle() {
-        assertThat(bookServices.getBookTile("1")).isEqualTo("");
+        assertThat(bookServices.getBookTile("1")).contains("sunt aut");
     }
 
     @Test
@@ -32,17 +24,17 @@ public class ApiTest {
     }
 
     @Test
-    public void testGetSpecificBook() {
-        assertThat(bookServices.getBookTile("101")).isEqualTo("Heroes");
+    public void testPatchBook() {
+        bookServices.updateBookTitle("27", "New Heroes");
     }
 
     @Test
-    public void testPatchBook() {
-        bookServices.updateBookTitle("101", "New Heroes");
+    public void testGetSpecificBook() {
+        assertThat(bookServices.getBookTile("27")).contains("quasi id");
     }
 
     @Test
     public void testDeleteBook() {
-        bookServices.deleteBook("101");
+        bookServices.deleteBook("1");
     }
 }

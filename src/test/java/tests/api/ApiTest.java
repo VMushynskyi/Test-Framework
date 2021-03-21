@@ -1,7 +1,6 @@
 package tests.api;
 
 import framework.api.models.Book;
-import framework.utils.logging.Log;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
